@@ -3,7 +3,7 @@ import numpy as np
 import skimage.io
 import skimage.viewer
 import matplotlib.pyplot as plt
-
+ 
 # Read Image
 image = skimage.io.imread(fname="images/noisystars1.jpg")
 
