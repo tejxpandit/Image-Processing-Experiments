@@ -30,23 +30,11 @@ plt.imshow(hog_image_rescaled, cmap="gray")
 plt.show()
 
 # CORNER DETECTION
-# Sheared checkerboard
-tform = skimage.transform.AffineTransform(scale=(1.3, 1.1), rotation=1, shear=0.7,
-                        translation=(110, 30))
-image = skimage.transform.warp(skimage.data.checkerboard()[:90, :90], tform.inverse,
-             output_shape=(200, 310))
-# Ellipse
-rr, cc = skimage.draw.ellipse(160, 175, 10, 100)
-image[rr, cc] = 1
-# Two squares
-image[30:80, 200:250] = 1
-
-
-coords = skimage.feature.corner_peaks(skimage.feature.corner_harris(image), min_distance=5, threshold_rel=0.02)
-coords_subpix = skimage.feature.corner_subpix(image, coords, window_size=13)
+coords = skimage.feature.corner_peaks(skimage.feature.corner_harris(g_image), min_distance=5, threshold_rel=0.02)
+coords_subpix = skimage.feature.corner_subpix(g_image, coords, window_size=13)
 
 fig, ax = plt.subplots()
-ax.imshow(image, cmap=plt.cm.gray)
+ax.imshow(g_image, cmap=plt.cm.gray)
 ax.plot(coords[:, 1], coords[:, 0], color='cyan', marker='o',
         linestyle='None', markersize=6)
 ax.plot(coords_subpix[:, 1], coords_subpix[:, 0], '+r', markersize=15)
