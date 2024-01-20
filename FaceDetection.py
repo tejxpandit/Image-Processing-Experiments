@@ -31,3 +31,18 @@ for face in faces:
 
 plt.show()
 
+# # Display Faces
+# fig, ax = plt.subplots(1, len(faces), figsize=(15,5))
+# ax_n = 0
+
+# for face in faces:
+#     minX, minY, maxX, maxY = face['c'], face['r'], face['c']+face['width'], face['r']+face['height']
+
+#     # Filter Out Small Errors
+#     ax[ax_n].imshow(image[minX:maxX, minY:maxY])
+#     ax[ax_n].get_xaxis().set_visible(False)
+#     ax[ax_n].get_yaxis().set_visible(False)
+#     ax_n += 1
+
+# fig.tight_layout()
+# plt.show()
