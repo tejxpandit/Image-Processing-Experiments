@@ -7,7 +7,7 @@ from skimage import data
 from matplotlib.patches import Rectangle
 
 # Read Image
-image = skimage.io.imread(fname="images/Akerkars Colorized.jpg")
+image = skimage.io.imread(fname="images/faces.jpg")
 
 # Load Trained Face Cascade Model
 trained = data.lbp_frontal_face_cascade_filename()
