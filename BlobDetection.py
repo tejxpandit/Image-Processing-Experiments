@@ -42,5 +42,22 @@ properties =['area','bbox','convex_area','bbox_area',
 data = skimage.measure.regionprops_table(blobs, properties = properties)
 print(tabulate(data, headers='keys'))
 
+# Draw Bounding Boxes
+fig, ax = plt.subplots()
+plt.imshow(g_image, cmap="gray")
+min_size = 50
+num_of_objects = 0
+
+for i in skimage.measure.regionprops(blobs):
+    minX, minY, maxX, maxY = i.bbox
+    rect = Rectangle((minY, minX), maxY - minY, maxX - minX,
+                    fill=False, edgecolor='red', linewidth=2)
+
+    # Filter Out Small Errors
+    if(not tooSmall(minX, minY, maxX, maxY, min_size)):
+        ax.add_patch(rect)
+        num_of_objects += 1
+
+plt.show()
 
 
