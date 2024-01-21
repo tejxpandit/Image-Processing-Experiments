@@ -59,5 +59,3 @@ for i in skimage.measure.regionprops(blobs):
         num_of_objects += 1
 
 plt.show()
-
-
