@@ -59,3 +59,21 @@ for i in skimage.measure.regionprops(blobs):
         num_of_objects += 1
 
 plt.show()
+
+# Display Objects
+fig, ax = plt.subplots(1, num_of_objects, figsize=(15,5))
+ax_n = 0
+
+for i in skimage.measure.regionprops(blobs):
+    minX, minY, maxX, maxY = i.bbox
+
+    # Filter Out Small Errors
+    if(not tooSmall(minX, minY, maxX, maxY, min_size)):
+        ax[ax_n].imshow(image[minX:maxX, minY:maxY])
+        ax[ax_n].get_xaxis().set_visible(False)
+        ax[ax_n].get_yaxis().set_visible(False)
+        ax_n += 1
+
+fig.tight_layout()
+plt.show()
+
